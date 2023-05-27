@@ -1,0 +1,34 @@
+#include<iostream>
+
+using namespace std;
+
+class quotient_remainder_finder
+{
+    private:
+        int dividend,divisor;
+        int quotient,remainder;
+    public:
+        void finder(int divisor1,int dividend1)
+        {
+            dividend = dividend1;
+            divisor = divisor1;
+            quotient = dividend/divisor;
+            remainder = dividend%divisor;
+            cout<<"Quotient :-"<<quotient<<endl;
+            cout<<"Remainder :-"<<remainder<<endl;
+        }
+};
+
+int main()
+{
+    int  dividend,divisor;
+    quotient_remainder_finder obj1;
+
+    cout<<"Enter Dividend :-";
+    cin>>dividend;
+    cout<<"Enter Divisor :-";
+    cin>>divisor;
+    obj1.finder(divisor,dividend);
+
+    return 0;
+}
