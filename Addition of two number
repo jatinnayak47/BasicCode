@@ -1,0 +1,29 @@
+#include<iostream>
+
+using namespace std;
+
+class addition{
+    private:
+        int n1;
+        int n2;
+        int result;
+    public:
+        void calculator(int num1,int num2)
+        {
+            n1 = num1;
+            n2 = num2;
+            result = n1 + n2;
+            cout<<"Sum of "<<n1<<" & "<<n2<<" is "<<result<<endl;
+        }
+};
+
+int main()
+{
+    int num1,num2;
+    cout<<"Enter Two Number :-";
+    cin>>num1>>num2;
+    addition A1;
+    A1.calculator(num1,num2);
+
+    return 0;
+}
