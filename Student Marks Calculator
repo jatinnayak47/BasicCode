@@ -1,0 +1,96 @@
+#include <iostream>
+
+using namespace std;
+
+class Student {
+    public:
+        string name;
+        int roll, age;
+        
+        Student(string name, int roll, int age){
+            this->name = name;
+            this->roll = roll;
+            this->age = age;
+        }
+
+        void input(){
+            cout << "Name: ";
+            cin >> name;
+            cout << "Roll: ";
+            cin >> roll;
+            cout << "Age: ";
+            cin >> age;
+        }
+
+        void display(){
+            cout << "Name: " << name << "\nRoll: " << roll << "\nAge: ";
+            cout << age << "\n";
+        }
+};
+
+class Test: Student {
+    public:
+        int marks[5];
+
+        Test( string name, int roll, int age ): Student( name, roll, age ){
+            cout << "Enter marks in 5 subjects: ";
+            for( int i = 0; i < 5; i++ )
+                cin >> marks[i];
+        }
+        void display(){
+            Student::display();
+            cout << "Marks: ";
+            for( int i = 0; i < 5; i++ )
+                cout << marks[i] << " ";
+            cout << endl;
+        }
+};
+
+class Sports: Student {
+    public:
+        int marks[5];
+        Sports( string name, int roll, int age ): Student( name, roll, age ){
+            // Input the marks
+            cout << "Enter marks in 5 subjects: ";
+            for( int i = 0; i < 5; i++ )
+                cin >> marks[i];
+        }
+        void display(){
+            cout << "Marks: ";
+            for( int i = 0; i < 5; i++ )
+                cout << marks[i] << " ";
+            cout << endl;
+        }
+};
+
+class Total: Test, Sports {
+    public:
+        float total, percentage;
+        Total( string name, int roll, int age ): 
+         Test( name, roll, age ),
+         Sports( name, roll, age )
+        {
+            // Calculate
+            total = 0;
+            for( int i = 0; i < 5; i++ )
+                total += Test::marks[i] + Sports::marks[i];
+            
+            percentage = total/10; // Total subjects: 10
+        }
+        void display(){
+            Test::display();
+            Sports::display();
+            cout << "Total: " << total << "\nPercent: " << percentage << endl;
+        }
+};
+
+
+int main(){
+    string name;
+    int roll, age;
+    cout << "Enter name, roll, age: ";
+    cin >> name >> roll >> age;
+    Total a( name, roll, age );
+    a.display();
+    return 0;
+}
